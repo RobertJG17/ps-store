@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from spotipy.oauth2 import SpotifyClientCredentials
 
-sp = spotipy.Spotify(auth="BQARNVdE3z-4k6WvEUYPihU19NWMgcpZCHtY5HwUZ_Gazz8PWQB-fGs0YHsbM-bjqh9_GjkwJiULxn2k34MFRY5j_YNUJGG4Z8OrBth_T1F0IuSxyTq5PIy4dHD-2fbTQ4EMaoXl4oq1SAhs_Iz2mBCWtClkIYRt9PV-8t-4x434HNhUVVUV-50kuvVrSaqywIuPkdtkBcHh07COVgb4ajZBuI0GzsdIH4GHPmzjBjzn2eQGy8-MBvRp1TBPi-vpoIlxTR41l5IhDVmQlOEfEAuqT2CubxyrIvZ0Ikks82f1")
+sp = spotipy.Spotify(auth="BQAaLF-uU4PtLTBRT-3a917vwE967OMkPOVMROCFdcbkgn-gkTqmNTF9EOjLnsuhCLL86-T--SFPJcMLI_ZoiYC2tfzF5iSjFiR2QmpvhDGhqQP-85G0JRkP6x3zzI5e_oP1nBFtajtMh2pwFySeKh3z0n1CEOShpecz6N5tbvk9WdEeXIWE5FYgGTZnj_xFIrq2Yo61pi3GamZ2cWIMBURhT_UHlxbPOw3rt_qn12KqI9WstUOyuCfRgFvPRmPq7twu5hvhRowD3r2xsWdW1cMqNLTj_oMo3sJtMX4t7Cbp")
 
 
 ranges = ['short_term', 'medium_term', 'long_term']
