@@ -6,17 +6,17 @@ sp = spotipy.Spotify(auth="BQARNVdE3z-4k6WvEUYPihU19NWMgcpZCHtY5HwUZ_Gazz8PWQB-f
 
 ranges = ['short_term', 'medium_term', 'long_term']
 
-results = sp.current_user_top_artists(time_range=ranges[1], limit=50)
+results = sp.current_user_top_tracks(time_range=ranges[1], limit=50)
 
+top_track_ids = []
 
 for result in results["items"]:
-    print("name: ", result["name"], "uri: ", result["uri"], "\n")
+    track_id = result["uri"].split(":")[2]
+    print(track_id)
+    top_track_ids.append(track_id)
+    # print("name: ", result["name"], "uri: ", result["uri"], "\n")
 
-# results = spotify.artist_albums(birdy_uri, album_type='album')
-# albums = results['items']
-# while results['next']:
-#     results = spotify.next(results)
-#     albums.extend(results['items'])
+track_analysis = sp.audio_features(top_track_ids)
 
-# for album in albums:
-#     print(album['name'])
+for track in track_analysis:
+    print(track, '\n')
