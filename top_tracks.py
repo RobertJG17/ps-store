@@ -10,6 +10,8 @@ ranges = ['short_term', 'medium_term', 'long_term']
 
 results = sp.current_user_top_tracks(time_range=ranges[1], limit=50)
 
+print(results)
+
 top_track_ids = []
 
 for result in results["items"]:
