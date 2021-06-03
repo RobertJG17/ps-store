@@ -1,13 +1,35 @@
-from flask import Flask, render_template, Markup
-from flask_cors import CORS
+from flask import Flask
+from flask_cors import CORS, cross_origin
+from current_track import curr_song_svg
+
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True, resources={r"/": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
+@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def index():
-    svg = open("radar.svg").read()
+    return 'yeet'
+
+
+@app.route('/spider', methods=['GET'])
+@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
+def spider():
+
+    with open("radar.svg", "r") as img:
+        svg = img.read()
+
+    return svg
+
+
+@app.route('/current-song-analysis', methods=['GET'])
+@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
+def analysis():
+
+    with open(curr_song_svg, "r") as img:
+        svg = img.read()
 
     return svg
 

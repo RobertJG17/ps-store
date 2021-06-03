@@ -1,9 +1,9 @@
-from config import sp
+from config import spotty
 
 
 ranges = ['short_term', 'medium_term', 'long_term']
 
-results = sp.current_user_top_tracks(time_range=ranges[2], limit=50)
+results = spotty.current_user_top_tracks(time_range=ranges[2], limit=50)
 
 top_track_ids = []
 
@@ -13,7 +13,7 @@ for result in results["items"]:
     top_track_ids.append(track_id)
     # print("name: ", result["name"], "uri: ", result["uri"], "\n")
 
-track_analysis = sp.audio_features(top_track_ids)
+track_analysis = spotty.audio_features(top_track_ids)
 
 # for track in track_analysis:
 #     print(track, '\n')
