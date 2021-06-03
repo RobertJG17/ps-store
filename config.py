@@ -16,7 +16,7 @@ scope = 'user-top-read'
 
 auth_manager = SpotifyOAuth(client_id=cid,
                             client_secret=secret,
-                            redirect_uri='http://127.0.0.1:3000/',
+                            redirect_uri='http://127.0.0.1:5000/',
                             scope=scope)
 
 spotty = Spotify(auth_manager=auth_manager)
