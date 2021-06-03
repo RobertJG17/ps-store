@@ -52,26 +52,11 @@ export async function fetchTokenAsync(code) {
 
 
 export function getCode() {
-    const redirect_uri = 'http://localhost:3000/';
+    const redirect_uri = 'http://127.0.0.1:5000/callback';
     const client_id = '474793580c424c75871ceae58caa9a06';
-    const client_secret = '0110454a3aa24e4099e05ce2abfe745a';
+    // const client_secret = '0110454a3aa24e4099e05ce2abfe745a';
 
-    // let scopes = 
-    // [
-    //     "streaming",
-    //     "user-read-currently-playing",
-    //     "user-read-playback-state",
-    //     "user-library-read",
-    //     "user-library-modify",
-    //     "user-modify-playback-state",
-    //     "user-read-email",
-    //     "user-top-read",
-    //     "user-read-private",
-    //     "playlist-modify-public",
-    //     "playlist-modify-private"
-    //   ];
-
-      let scopes = "user-top-read"
+    let scopes = "user-top-read"
 
     window.location.href = 'https://accounts.spotify.com/authorize' +
     '?response_type=code' +
