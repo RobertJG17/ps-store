@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, redirect
 from flask_cors import CORS, cross_origin
 import requests
 import ast
@@ -25,9 +25,9 @@ def getCode():
     tokenStr = response.content
     dict_str = tokenStr.decode("UTF-8")
     token = ast.literal_eval(dict_str)
-    print(token['access_token'])
+    print(token)
     #redirect user back to http://localhost:3000/ with token
-    return 'yeet code'
+    return redirect(f"http://localhost:3000/?token={token['access_token']}&refresh_token={token['refresh_token']}&expires_in={token['expires_in']}", code=302)
 
 
 @app.route('/spider', methods=['GET'])
