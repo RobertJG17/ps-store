@@ -20,4 +20,5 @@ def curr_song_svg(song=None):
                                   name=track_name))
 
     with open("current_song.svg", "w") as open_file:
+        fig = fig.to_html()
         open_file.write(fig)
