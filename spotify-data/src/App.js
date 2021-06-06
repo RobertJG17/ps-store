@@ -41,7 +41,7 @@ function App() {
         {chart ? <div className="chart">{parse(chart)}</div> : <div></div>}
         <p>Weener.</p>
         <button onClick={() => getCode()}>Get code</button>
-        {token ? 
+        {token["access_token"] ?
           <p>Your azz logged in tho</p>
           :
           <p>Ur azz not logged in tho</p>

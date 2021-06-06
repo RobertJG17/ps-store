@@ -56,7 +56,7 @@ export function getCode() {
     const client_id = '474793580c424c75871ceae58caa9a06';
     // const client_secret = '0110454a3aa24e4099e05ce2abfe745a';
 
-    let scopes = "user-top-read"
+    let scopes = "user-top-read ugc-image-upload user-read-recently-played user-top-read user-read-playback-position user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-modify-public playlist-modify-private playlist-read-private playlist-read-collaborative user-follow-modify user-follow-read user-library-modify user-library-read user-read-email user-read-private"
 
     window.location.href = 'https://accounts.spotify.com/authorize' +
     '?response_type=code' +
