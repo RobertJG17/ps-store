@@ -3,7 +3,8 @@ import logo from "./logo.svg";
 import axios from "axios";
 import parse from "html-react-parser";
 import "./App.css";
-import { getCode } from "./api";
+import Player from "./components/player";
+import { getCode, getCurrentPlaybackState } from "./api";
 
 function App() {
   const [chart, setChart] = useState(null);
@@ -29,8 +30,9 @@ function App() {
         refresh_token: params.get("refresh_token"),
         expires_in: params.get("expires_in"),
       });
-
       localStorage.setItem("token", params.get("token"));
+      localStorage.setItem("refresh_token", params.get("refresh_token"));
+      localStorage.setItem("expires_in", params.get("expires_in"));
     }
   }, []);
 
@@ -38,15 +40,20 @@ function App() {
     <div className="App">
       {console.log(token)},
       <header className="App-header">
-        {chart ? <div className="chart">{parse(chart)}</div> : <div></div>}
-        <p>Weener.</p>
-        <button onClick={() => getCode()}>Get code</button>
-        {token["access_token"] ?
-          <p>Your azz logged in tho</p>
+        {/* {chart ? <div className="chart">{parse(chart)}</div> : <div></div>} */}
+        <h1>Weener.</h1>
+        {localStorage.getItem("token") && localStorage.getItem("token") !== "null" ?
+          <div>
+            <button onClick={() => (localStorage.removeItem("token"), window.location.href = "http://localhost:3000/")}>Log Out</button>
+            <Player/>
+          </div>
           :
-          <p>Ur azz not logged in tho</p>
+          <div>
+            <p>Ur azz not logged in tho</p>
+            <button onClick={() => getCode()}>Login</button>
+          </div>
         }
-      </header>
+      </header> 
     </div>
   );
 }
