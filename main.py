@@ -1,19 +1,20 @@
 from flask import Flask, request, redirect
 from flask_cors import CORS, cross_origin
-import requests
 import ast
-# from current_track import curr_song_svg
-
+import requests
+import spotipy
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True, resources={r"/": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
+spotty = spotipy.Spotify()
 
 
 @app.route('/', methods=['GET'])
 @cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def index():
     return 'yeet'
+
 
 @app.route('/callback', methods=['GET'])
 @cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
@@ -25,7 +26,11 @@ def getCode():
     tokenStr = response.content
     dict_str = tokenStr.decode("UTF-8")
     token = ast.literal_eval(dict_str)
-    print(token)
+    acc_token = token['access_token']
+    spotty.set_auth(auth=acc_token)
+
+    song = spotty.currently_playing()['item']['id']
+    print(song)
     #redirect user back to http://localhost:3000/ with token
     return redirect(f"http://localhost:3000/?token={token['access_token']}&refresh_token={token['refresh_token']}&expires_in={token['expires_in']}", code=302)
 
@@ -36,18 +41,17 @@ def spider():
 
     with open("radar.svg", "r") as img:
         svg = img.read()
-
+    print('returned')
     return svg
 
 
-# @app.route('/current-song-analysis', methods=['GET'])
-# @cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
-# def analysis():
+@app.route('/current-song-analysis', methods=['GET'])
+@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
+def analysis():
+    with open("current_song.svg", "r") as img:
+        svg = img.read()
 
-#     with open(curr_song_svg, "r") as img:
-#         svg = img.read()
-
-#     return svg
+    return svg
 
 
 if __name__ == '__main__':
