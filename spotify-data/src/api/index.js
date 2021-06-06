@@ -165,9 +165,9 @@ export async function fetchRefreshTokenAsync(refreshToken) {
   async function _getValidTokenAsync() {
     console.log("getting valid token async...")
     const newToken = await localStorage.getItem("token");
-    const lastRefreshed = await localStorage.getItem("tokenTime");
-    const refreshToken = await localStorage.getItem("refresh");
-
+    const lastRefreshed = await localStorage.getItem("xpires_in");
+    const refreshToken = await localStorage.getItem("refresh_token");
+    console.log("-->", newToken)
     //    const newToken = await localStorage.getItem("token");
     // const lastRefreshed = await localStorage.getItem("tokenTime");
     // const refreshToken = await localStorage.getItem("refresh");

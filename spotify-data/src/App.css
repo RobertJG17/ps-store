@@ -28,6 +28,10 @@
   color: #61dafb;
 }
 
+h1 {
+  text-shadow: 2px 2px red;
+}
+
 .chart {
   width: 500px;
 }

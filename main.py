@@ -6,17 +6,14 @@ import ast
 
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True, resources={r"/": {"origins": "*"}})
-app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app)
 
 
 @app.route('/', methods=['GET'])
-@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def index():
     return 'yeet'
 
 @app.route('/callback', methods=['GET'])
-@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def getCode():
     code = request.args.get('code')
     #code/token exchange
@@ -31,7 +28,6 @@ def getCode():
 
 
 @app.route('/spider', methods=['GET'])
-@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def spider():
 
     with open("radar.svg", "r") as img:
@@ -41,7 +37,6 @@ def spider():
 
 
 # @app.route('/current-song-analysis', methods=['GET'])
-# @cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 # def analysis():
 
 #     with open(curr_song_svg, "r") as img:
