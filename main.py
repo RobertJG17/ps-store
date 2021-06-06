@@ -5,19 +5,17 @@ import requests
 import spotipy
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True, resources={r"/": {"origins": "*"}})
-app.config['CORS_HEADERS'] = 'Content-Type'
+
 spotty = spotipy.Spotify()
+CORS(app)
 
 
 @app.route('/', methods=['GET'])
-@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def index():
     return 'yeet'
 
 
 @app.route('/callback', methods=['GET'])
-@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def getCode():
     code = request.args.get('code')
     #code/token exchange
@@ -36,7 +34,6 @@ def getCode():
 
 
 @app.route('/spider', methods=['GET'])
-@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def spider():
 
     with open("radar.svg", "r") as img:
@@ -50,6 +47,7 @@ def spider():
 def analysis():
     with open("current_song.svg", "r") as img:
         svg = img.read()
+
 
     return svg
 
